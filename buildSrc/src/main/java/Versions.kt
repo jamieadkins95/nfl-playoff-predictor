@@ -27,7 +27,7 @@ object Versions {
     const val glide = "4.9.0"
 
     const val joda = "2.9.9"
-    const val groupie = "2.3.0"
+    const val groupie = "2.7.2"
 
     // Logging
     const val crashlytics = "2.9.1@aar"
