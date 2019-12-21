@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        
+    }
+    dependencies {
+        classpath Libs.gradle_plugin
+        classpath Libs.kotlin_plugin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            android {
+                compileSdkVersion Versions.compile_sdk
+
+                defaultConfig {
+                    minSdkVersion Versions.min_sdk
+                    versionCode Versions.app_version_code
+                    versionName Versions.app_version_name
+                }
+
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_1_8
+                    targetCompatibility JavaVersion.VERSION_1_8
+                }
+
+                buildTypes {
+                    debug {
+                        debuggable true
+                    }
+                    release {
+                        proguardFiles 'proguard-rules.pro'
+                    }
+                }
+
+                sourceSets {
+                    test.resources.srcDirs += 'src/test/res'
+                }
+            }
+        }
+    }
+}
