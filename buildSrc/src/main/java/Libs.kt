@@ -55,8 +55,6 @@ object Libs {
     const val kotlin_test_annotations = "org.jetbrains.kotlin:kotlin-test-annotations-common:${Versions.kotlin}"
     const val kotlin_test_junit = "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}"
 
-    const val mock_webserver = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
-
     const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
     const val mockito_android = "org.mockito:mockito-android:${Versions.mockito}"
     const val mockito_inline = "org.mockito:mockito-inline:${Versions.mockito}"
