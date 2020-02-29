@@ -1,8 +1,13 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+androidExtensions {
+    experimental = true
+}
 
 android {
     compileSdkVersion Versions.compile_sdk
@@ -20,6 +25,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -27,6 +35,22 @@ dependencies {
     implementation Libs.androidx_appcompat
     implementation Libs.androidx_constraint_layout
     implementation Libs.androidx_core
+    implementation Libs.material_design
     implementation Libs.nav_component_fragment
     implementation Libs.nav_component_ui
+
+    implementation Libs.firebase_analytics
+    implementation Libs.firebase_crashlytics
+
+    implementation Libs.dagger
+    implementation Libs.dagger_support
+    kapt Libs.dagger_compiler
+    kapt Libs.dagger_processor
+
+    implementation Libs.timber
+    implementation Libs.rxjava
+    implementation Libs.groupie
+    implementation Libs.groupie_extensions
+
+    implementation project(':domain')
 }

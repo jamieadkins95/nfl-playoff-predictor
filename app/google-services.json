@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "242999528746",
+    "firebase_url": "https://nfl-playoff-predictor-21621.firebaseio.com",
+    "project_id": "nfl-playoff-predictor-21621",
+    "storage_bucket": "nfl-playoff-predictor-21621.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242999528746:android:a5c5000e51592621a2a253",
+        "android_client_info": {
+          "package_name": "com.jamieadkins.nfl.predictor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242999528746-5q3h6bl9in0uogrl9aih16g1hh0nt4t3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD26yJ0SZeBQ4uEDQ97Rw2VR9jtU2Po7jQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242999528746-5q3h6bl9in0uogrl9aih16g1hh0nt4t3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

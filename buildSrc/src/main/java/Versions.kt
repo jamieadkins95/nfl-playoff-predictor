@@ -3,27 +3,27 @@ object Versions {
     const val min_sdk = 21
     const val target_sdk = 28
 
-    const val gradle_plugin = "3.5.3"
+    const val gradle_plugin = "3.6.1"
     const val kotlin = "1.3.61"
 
     const val app_version_name = "1.0.0"
     const val app_version_code = 1
 
-    const val androidx_core = "1.1.0"
+    const val androidx_core = "1.2.0"
     const val androidx_appcompat = "1.1.0"
-    const val androidx_constraint_layout = "2.0.0-beta3"
-    const val material_design = "1.1.0-rc01"
-    const val nav_component = "2.2.0-rc04"
+    const val androidx_constraint_layout = "2.0.0-beta4"
+    const val material_design = "1.2.0-alpha02"
+    const val nav_component = "2.2.1"
 
     const val retrofit = "2.4.0"
     const val okhttp = "3.8.0"
     const val okio = "1.13.0"
-    const val rxjava = "2.1.12"
+    const val rxjava = "2.2.18"
     const val rxandroid = "2.0.2"
     const val rxpreferences = "2.0.0"
     const val gson = "2.8.2"
     const val curl = "0.3.1"
-    const val dagger = "2.24"
+    const val dagger = "2.26"
     const val glide = "4.9.0"
 
     const val joda = "2.9.9"

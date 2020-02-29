@@ -26,6 +26,9 @@ object Libs {
     const val rxandroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxandroid}"
     const val rxpreferences = "com.f2prateek.rx.preferences2:rx-preferences:${Versions.rxpreferences}"
 
+    //Firebase
+    const val firebase_analytics = "com.google.firebase:firebase-analytics:17.2.3"
+    const val firebase_crashlytics = "com.google.firebase:firebase-crashlytics:17.0.0-beta01"
 
     //dagger
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
