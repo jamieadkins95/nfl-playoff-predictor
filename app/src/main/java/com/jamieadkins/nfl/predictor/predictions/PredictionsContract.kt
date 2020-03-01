@@ -9,4 +9,11 @@ interface PredictionsContract {
         fun hideLoadingIndicator()
         fun showPredictions(predictions: PredictionState)
     }
+
+    interface Presenter {
+        fun onAttach(newView: View)
+        fun onDetach()
+
+        fun makePrediction(matchId: Long, teamId: Long)
+    }
 }

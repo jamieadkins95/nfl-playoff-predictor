@@ -51,6 +51,7 @@ dependencies {
     implementation Libs.rxjava
     implementation Libs.groupie
     implementation Libs.groupie_extensions
+    implementation Libs.coil
 
     implementation project(':domain')
 }
