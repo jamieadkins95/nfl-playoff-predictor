@@ -29,4 +29,9 @@
         <item name="cornerSize">8dp</item>
     </style>
 
+    <style name="NflPredictorTheme.Chip.Choice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textColor">@color/choice_chip_text_color</item>
+        <item name="chipCornerRadius">8dp</item>
+    </style>
+
 </resources>

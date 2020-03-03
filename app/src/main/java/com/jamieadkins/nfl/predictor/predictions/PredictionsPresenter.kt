@@ -14,11 +14,11 @@ class PredictionsPresenter @Inject constructor() : PredictionsContract.Presenter
     override fun onAttach(newView: PredictionsContract.View) {
         view = newView
         val saints = TeamEntity(
-            1, "Saints", "NO", "https://upload.wikimedia.org/wikipedia/en/7/72/Arizona_Cardinals_logo.svg"
+            1, "Saints", "NO", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
         )
 
         val arizona = TeamEntity(
-            2, "Cardinals", "ARI", "https://upload.wikimedia.org/wikipedia/en/7/72/Arizona_Cardinals_logo.svg"
+            2, "Cardinals", "ARI", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
         )
         val match = MatchEntity(1, arizona, saints, MatchOutcomeEntity.HomeTeamWin)
         val mockPredictions = PredictionState(

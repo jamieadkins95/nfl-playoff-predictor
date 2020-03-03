@@ -35,9 +35,7 @@ object Libs {
     const val dagger_support = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val dagger_processor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     const val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
-    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
-    const val glide_okhttp_integration = "com.github.bumptech.glide:okhttp3-integration:${Versions.glide}@aar"
+    const val coil = "io.coil-kt:coil:0.9.5"
 
     const val joda = "joda-time:joda-time:${Versions.joda}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
