@@ -5,7 +5,11 @@ import com.jamieadkins.nfl.predictor.domain.MatchEntity
 import com.jamieadkins.nfl.predictor.domain.MatchOutcomeEntity
 import com.jamieadkins.nfl.predictor.domain.PredictionState
 import com.jamieadkins.nfl.predictor.domain.TeamEntity
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import kotlin.random.Random
 
 class PredictionsPresenter @Inject constructor() : PredictionsContract.Presenter {
 
@@ -13,23 +17,30 @@ class PredictionsPresenter @Inject constructor() : PredictionsContract.Presenter
 
     override fun onAttach(newView: PredictionsContract.View) {
         view = newView
-        val saints = TeamEntity(
-            1, "Saints", "NO", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
-        )
 
-        val arizona = TeamEntity(
-            2, "Cardinals", "ARI", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
-        )
-        val match = MatchEntity(1, arizona, saints, MatchOutcomeEntity.HomeTeamWin)
-        val mockPredictions = PredictionState(
-            2019,
-            listOf(
-                GameWeekEntity(
-                    listOf(match, match, match, match, match, match, match, match, match, match)
+        Observable.interval(5, TimeUnit.SECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .map {
+                val saints = TeamEntity(
+                    1, "Saints", "NO", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
                 )
-            )
-        )
-        view?.showPredictions(mockPredictions)
+
+                val arizona = TeamEntity(
+                    2, "Cardinals", "ARI", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
+                )
+                val match = MatchEntity(1, arizona, saints, getRandomOutcome())
+                PredictionState(
+                    2019,
+                    listOf(
+                        GameWeekEntity(
+                            listOf(match, match, match, match, match, match, match, match, match, match)
+                        )
+                    )
+                )
+            }
+            .subscribe {
+                view?.showPredictions(it)
+            }
     }
 
     override fun onDetach() {
@@ -38,5 +49,14 @@ class PredictionsPresenter @Inject constructor() : PredictionsContract.Presenter
 
     override fun makePrediction(matchId: Long, teamId: Long) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun getRandomOutcome(): MatchOutcomeEntity {
+        return when (Random.nextInt(0, 3)) {
+            0 -> MatchOutcomeEntity.HomeTeamWin
+            1 -> MatchOutcomeEntity.AwayTeamWin
+            2 -> MatchOutcomeEntity.Tie
+            else -> MatchOutcomeEntity.HomeTeamWin
+        }
     }
 }

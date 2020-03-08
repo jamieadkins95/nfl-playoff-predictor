@@ -31,7 +31,7 @@
 
     <style name="NflPredictorTheme.Chip.Choice" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="android:textColor">@color/choice_chip_text_color</item>
-        <item name="chipCornerRadius">8dp</item>
+        <item name="chipBackgroundColor">@color/choice_chip_background_color</item>
     </style>
 
 </resources>

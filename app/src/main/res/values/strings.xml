@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">NFL Playoff Predictor</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nfl_playoff_predictor">NFL Playoff Predictor</string>
+    <string name="tie">TIE</string>
 </resources>
