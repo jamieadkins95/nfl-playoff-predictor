@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
@@ -43,9 +44,9 @@ dependencies {
     implementation Libs.firebase_crashlytics
 
     implementation Libs.dagger
-    implementation Libs.dagger_support
+    implementation Libs.androidx_hilt
     kapt Libs.dagger_compiler
-    kapt Libs.dagger_processor
+    kapt Libs.androidx_hilt_compiler
 
     implementation Libs.timber
     implementation Libs.rxjava

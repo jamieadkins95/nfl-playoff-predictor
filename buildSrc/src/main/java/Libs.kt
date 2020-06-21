@@ -7,6 +7,8 @@ object Libs {
     const val androidx_appcompat = "androidx.appcompat:appcompat:${Versions.androidx_appcompat}"
     const val androidx_core = "androidx.core:core:${Versions.androidx_core}"
     const val androidx_constraint_layout = "androidx.constraintlayout:constraintlayout:${Versions.androidx_constraint_layout}"
+    const val androidx_hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val androidx_hilt_compiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
     const val material_design = "com.google.android.material:material:${Versions.material_design}"
     const val nav_component_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_component}"
     const val nav_component_ui = "androidx.navigation:navigation-ui-ktx:${Versions.nav_component}"
@@ -32,8 +34,6 @@ object Libs {
 
     //dagger
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-    const val dagger_support = "com.google.dagger:dagger-android-support:${Versions.dagger}"
-    const val dagger_processor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     const val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val coil = "io.coil-kt:coil:0.9.5"
 

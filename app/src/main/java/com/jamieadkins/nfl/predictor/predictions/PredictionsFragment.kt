@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jamieadkins.nfl.predictor.R
 import com.jamieadkins.nfl.predictor.databinding.FragmentPredictionsBinding
 import com.jamieadkins.nfl.predictor.domain.PredictionState
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
-import dagger.android.support.DaggerFragment
-import timber.log.Timber
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-class PredictionsFragment : DaggerFragment(), PredictionsContract.View {
+@AndroidEntryPoint
+class PredictionsFragment : Fragment(), PredictionsContract.View {
 
     private var binding: FragmentPredictionsBinding? = null
     @Inject lateinit var presenter: PredictionsContract.Presenter

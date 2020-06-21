@@ -23,7 +23,8 @@ object Versions {
     const val rxpreferences = "2.0.0"
     const val gson = "2.8.2"
     const val curl = "0.3.1"
-    const val dagger = "2.26"
+    const val dagger = "2.28"
+    const val hilt = "2.28-alpha"
     const val glide = "4.9.0"
 
     const val joda = "2.9.9"

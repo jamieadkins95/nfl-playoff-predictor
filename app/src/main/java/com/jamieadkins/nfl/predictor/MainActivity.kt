@@ -1,19 +1,11 @@
 package com.jamieadkins.nfl.predictor
 
 import android.os.Bundle
-import com.jamieadkins.nfl.predictor.PredictorApplication.Companion.coreComponent
-import com.jamieadkins.nfl.predictor.di.DaggerAndroidActivity
-import com.jamieadkins.nfl.predictor.di.DaggerAppComponent
+import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : DaggerAndroidActivity() {
-
-    override fun onInject() {
-        DaggerAppComponent.builder()
-            .core(coreComponent)
-            .activity(this)
-            .build()
-            .inject(this)
-    }
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
