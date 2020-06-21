@@ -17,30 +17,20 @@ data class PredictionItem(
 
     override fun getLayout(): Int = R.layout.view_match
 
-    override fun bind(viewHolder: GroupieViewHolder, position: Int)  = viewHolder.itemView.bind()
+    override fun bind(viewHolder: GroupieViewHolder, position: Int) = viewHolder.itemView.bind()
 
     private fun View.bind() {
         homeTeamLogo.load(match.homeTeam.logoUrl)
         awayTeamLogo.load(match.awayTeam.logoUrl)
+        away.text = match.awayTeam.abbreviation
+        home.text = match.homeTeam.abbreviation
 
-        val constraintSet = ConstraintSet()
-        constraintSet.clone(constraintLayout)
         when (match.outcome) {
-            MatchOutcomeEntity.HomeTeamWin -> {
-                constraintSet.connect(R.id.winnerIndicator, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START,0)
-                constraintSet.connect(R.id.winnerIndicator, ConstraintSet.END, R.id.center, ConstraintSet.START, 0)
-            }
-            MatchOutcomeEntity.AwayTeamWin -> {
-                constraintSet.connect(R.id.winnerIndicator, ConstraintSet.START, R.id.center, ConstraintSet.END,0)
-                constraintSet.connect(R.id.winnerIndicator, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END,0)
-            }
-            MatchOutcomeEntity.Tie -> {
-                constraintSet.connect(R.id.winnerIndicator, ConstraintSet.END, R.id.center, ConstraintSet.START, 0)
-                constraintSet.connect(R.id.winnerIndicator, ConstraintSet.START, R.id.center, ConstraintSet.END,0)
-            }
+            is MatchOutcomeEntity.HomeTeamWin -> results.check(R.id.home)
+            is MatchOutcomeEntity.AwayTeamWin -> results.check(R.id.away)
+            is MatchOutcomeEntity.Tie -> results.check(R.id.tie)
+            is MatchOutcomeEntity.Undecided -> results.clearCheck()
         }
-        TransitionManager.beginDelayedTransition(constraintLayout)
-        constraintSet.applyTo(constraintLayout)
     }
 
     override fun getSpanSize(spanCount: Int, position: Int): Int = 1

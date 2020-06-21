@@ -14,15 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/winnerIndicator"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="?colorPrimary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/center"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/center"
@@ -31,16 +22,14 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/tie"
-            style="@style/NflPredictorTheme.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:text="@string/tie"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/at"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/ic_at_24"
+            android:tint="?colorOnSurface"
+            app:layout_constraintStart_toStartOf="@id/center"
+            app:layout_constraintEnd_toEndOf="@id/center"
             app:layout_constraintTop_toTopOf="@id/awayTeamLogo"
             app:layout_constraintBottom_toBottomOf="@id/awayTeamLogo" />
 
@@ -53,9 +42,9 @@
             tools:src="@drawable/ic_arizona"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tie"
+            app:layout_constraintEnd_toStartOf="@id/at"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toTopOf="@id/results" />
 
         <ImageView
             android:id="@+id/homeTeamLogo"
@@ -66,9 +55,45 @@
             tools:src="@drawable/ic_arizona"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tie"
+            app:layout_constraintStart_toEndOf="@id/at"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toTopOf="@id/results" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            app:singleSelection="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/awayTeamLogo"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/away"
+                style="@style/NflPredictorTheme.Chip.Choice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="NO" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/tie"
+                style="@style/NflPredictorTheme.Chip.Choice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tie" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/home"
+                style="@style/NflPredictorTheme.Chip.Choice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="ARI" />
+
+        </com.google.android.material.chip.ChipGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

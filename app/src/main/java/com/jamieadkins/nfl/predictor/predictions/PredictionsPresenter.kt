@@ -18,29 +18,23 @@ class PredictionsPresenter @Inject constructor() : PredictionsContract.Presenter
     override fun onAttach(newView: PredictionsContract.View) {
         view = newView
 
-        Observable.interval(5, TimeUnit.SECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
-            .map {
-                val saints = TeamEntity(
-                    1, "Saints", "NO", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
-                )
+        val saints = TeamEntity(
+            1, "Saints", "NO", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
+        )
 
-                val arizona = TeamEntity(
-                    2, "Cardinals", "ARI", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
+        val arizona = TeamEntity(
+            2, "Cardinals", "ARI", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
+        )
+        val match = MatchEntity(1, arizona, saints, getRandomOutcome())
+        val predictions = PredictionState(
+            2019,
+            listOf(
+                GameWeekEntity(
+                    listOf(match, match, match, match, match, match, match, match, match, match)
                 )
-                val match = MatchEntity(1, arizona, saints, getRandomOutcome())
-                PredictionState(
-                    2019,
-                    listOf(
-                        GameWeekEntity(
-                            listOf(match, match, match, match, match, match, match, match, match, match)
-                        )
-                    )
-                )
-            }
-            .subscribe {
-                view?.showPredictions(it)
-            }
+            )
+        )
+        view?.showPredictions(predictions)
     }
 
     override fun onDetach() {
