@@ -1,0 +1,12 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply from: '../test-dependencies.gradle'
+
+dependencies {
+    implementation Libs.kotlin
+    implementation Libs.rxjava
+    implementation Libs.dagger
+    kapt Libs.dagger_compiler
+    implementation Libs.timber
+}
