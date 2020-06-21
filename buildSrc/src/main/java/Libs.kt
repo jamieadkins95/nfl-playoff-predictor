@@ -15,9 +15,10 @@ object Libs {
 
     //retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val retrofit_rxjava_adapter = "com.squareup.retrofit2:adapter-rxjava:${Versions.retrofit}"
-    const val retrofit_rxjava2_adapter = "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0"
-    const val retrofit_gson_coverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val retrofit_rxjava2_adapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+    const val retrofit_moshi_converter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    const val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
+    const val moshi_codegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}"
 
     //okhttp
     const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
@@ -38,7 +39,6 @@ object Libs {
     const val coil = "io.coil-kt:coil:0.9.5"
 
     const val joda = "joda-time:joda-time:${Versions.joda}"
-    const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val curl = "com.github.mrmike:ok2curl:${Versions.curl}"
     const val groupie = "com.xwray:groupie:${Versions.groupie}"
     const val groupie_extensions = "com.xwray:groupie-kotlin-android-extensions:${Versions.groupie}"

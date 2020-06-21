@@ -1,40 +1,27 @@
 package com.jamieadkins.nfl.predictor.predictions
 
-import com.jamieadkins.nfl.predictor.domain.GameWeekEntity
-import com.jamieadkins.nfl.predictor.domain.MatchEntity
+import com.jamieadkins.nfl.predictor.domain.GetPredictionsForSeasonUseCase
 import com.jamieadkins.nfl.predictor.domain.MatchOutcomeEntity
-import com.jamieadkins.nfl.predictor.domain.PredictionState
-import com.jamieadkins.nfl.predictor.domain.TeamEntity
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import java.util.concurrent.TimeUnit
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import kotlin.random.Random
 
-class PredictionsPresenter @Inject constructor() : PredictionsContract.Presenter {
+class PredictionsPresenter @Inject constructor(
+    private val getPredictionsForSeasonUseCase: GetPredictionsForSeasonUseCase
+) : PredictionsContract.Presenter {
 
     var view: PredictionsContract.View? = null
 
     override fun onAttach(newView: PredictionsContract.View) {
         view = newView
 
-        val saints = TeamEntity(
-            1, "Saints", "NO", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
-        )
-
-        val arizona = TeamEntity(
-            2, "Cardinals", "ARI", "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
-        )
-        val match = MatchEntity(1, arizona, saints, getRandomOutcome())
-        val predictions = PredictionState(
-            2019,
-            listOf(
-                GameWeekEntity(
-                    listOf(match, match, match, match, match, match, match, match, match, match)
-                )
-            )
-        )
-        view?.showPredictions(predictions)
+        getPredictionsForSeasonUseCase.getSeason(2019)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                view?.showPredictions(it)
+            }
     }
 
     override fun onDetach() {
@@ -43,14 +30,5 @@ class PredictionsPresenter @Inject constructor() : PredictionsContract.Presenter
 
     override fun makePrediction(matchId: Long, teamId: Long) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    private fun getRandomOutcome(): MatchOutcomeEntity {
-        return when (Random.nextInt(0, 3)) {
-            0 -> MatchOutcomeEntity.HomeTeamWin
-            1 -> MatchOutcomeEntity.AwayTeamWin
-            2 -> MatchOutcomeEntity.Tie
-            else -> MatchOutcomeEntity.HomeTeamWin
-        }
     }
 }

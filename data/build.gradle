@@ -1,12 +1,23 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 apply from: '../test-dependencies.gradle'
 
 dependencies {
+    implementation project(':domain')
     implementation Libs.kotlin
     implementation Libs.rxjava
+
     implementation Libs.dagger
+    implementation Libs.androidx_hilt
     kapt Libs.dagger_compiler
-    implementation Libs.timber
+    kapt Libs.androidx_hilt_compiler
+
+    api Libs.okhttp
+    api Libs.retrofit
+    implementation Libs.retrofit_rxjava2_adapter
+    implementation Libs.retrofit_moshi_converter
+    api Libs.moshi
+    kapt Libs.moshi_codegen
 }

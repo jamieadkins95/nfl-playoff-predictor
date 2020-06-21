@@ -21,7 +21,7 @@ object Versions {
     const val rxjava = "2.2.18"
     const val rxandroid = "2.0.2"
     const val rxpreferences = "2.0.0"
-    const val gson = "2.8.2"
+    const val moshi = "1.9.3"
     const val curl = "0.3.1"
     const val dagger = "2.28"
     const val hilt = "2.28-alpha"
