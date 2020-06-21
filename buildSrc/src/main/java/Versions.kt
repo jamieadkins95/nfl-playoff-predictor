@@ -3,7 +3,7 @@ object Versions {
     const val min_sdk = 21
     const val target_sdk = 28
 
-    const val gradle_plugin = "3.6.1"
+    const val gradle_plugin = "4.0.0"
     const val kotlin = "1.3.61"
 
     const val app_version_name = "1.0.0"
@@ -11,9 +11,9 @@ object Versions {
 
     const val androidx_core = "1.2.0"
     const val androidx_appcompat = "1.1.0"
-    const val androidx_constraint_layout = "2.0.0-beta4"
-    const val material_design = "1.2.0-alpha02"
-    const val nav_component = "2.2.1"
+    const val androidx_constraint_layout = "2.0.0-beta7"
+    const val material_design = "1.3.0-alpha01"
+    const val nav_component = "2.2.2"
 
     const val retrofit = "2.4.0"
     const val okhttp = "3.8.0"
