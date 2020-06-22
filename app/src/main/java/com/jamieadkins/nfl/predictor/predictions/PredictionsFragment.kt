@@ -56,7 +56,9 @@ class PredictionsFragment : Fragment(), PredictionsContract.View {
     }
 
     override fun showPredictions(predictions: PredictionState) {
-        val items = predictions.gameweeks.map { gameweeks -> gameweeks.matches.map(::PredictionItem) }.flatten()
+        val items = predictions.gameweeks.map {
+            gameweeks -> gameweeks.matches.map { PredictionItem(it, presenter::makePrediction) }
+        }.flatten()
         groupAdapter.update(items)
     }
 }

@@ -1,5 +1,6 @@
 package com.jamieadkins.nfl.predictor.predictions
 
+import com.jamieadkins.nfl.predictor.domain.MatchOutcomeEntity
 import com.jamieadkins.nfl.predictor.domain.PredictionState
 
 interface PredictionsContract {
@@ -14,6 +15,6 @@ interface PredictionsContract {
         fun onAttach(newView: View)
         fun onDetach()
 
-        fun makePrediction(matchId: Long, teamId: Long)
+        fun makePrediction(matchId: String, outcome: MatchOutcomeEntity)
     }
 }

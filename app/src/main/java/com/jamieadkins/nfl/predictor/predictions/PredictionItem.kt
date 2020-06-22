@@ -12,8 +12,9 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.view_match.view.*
 
 data class PredictionItem(
-    val match: MatchEntity
-) : Item(match.id) {
+    val match: MatchEntity,
+    val onClick: (String, MatchOutcomeEntity) -> Unit
+) : Item(match.id.hashCode().toLong()) {
 
     override fun getLayout(): Int = R.layout.view_match
 
@@ -25,11 +26,21 @@ data class PredictionItem(
         away.text = match.awayTeam.abbreviation
         home.text = match.homeTeam.abbreviation
 
+        results.setOnCheckedChangeListener(null)
         when (match.outcome) {
             is MatchOutcomeEntity.HomeTeamWin -> results.check(R.id.home)
             is MatchOutcomeEntity.AwayTeamWin -> results.check(R.id.away)
             is MatchOutcomeEntity.Tie -> results.check(R.id.tie)
             is MatchOutcomeEntity.Undecided -> results.clearCheck()
+        }
+
+        results.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.home -> onClick(match.id, MatchOutcomeEntity.HomeTeamWin)
+                R.id.away -> onClick(match.id, MatchOutcomeEntity.AwayTeamWin)
+                R.id.tie -> onClick(match.id, MatchOutcomeEntity.Tie)
+                else -> onClick(match.id, MatchOutcomeEntity.Undecided)
+            }
         }
     }
 

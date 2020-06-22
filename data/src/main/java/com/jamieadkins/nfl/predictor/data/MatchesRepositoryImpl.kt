@@ -27,7 +27,7 @@ class MatchesRepositoryImpl @Inject constructor(
                        else -> MatchOutcomeEntity.Undecided
                    }
 
-                   MatchEntity(event.id.toLong(), homeTeam, awayTeam, outcome)
+                   MatchEntity(event.id, homeTeam, awayTeam, outcome)
                }
                listOf(GameWeekEntity(matches))
            }

@@ -20,4 +20,8 @@ dependencies {
     implementation Libs.retrofit_moshi_converter
     api Libs.moshi
     kapt Libs.moshi_codegen
+
+    implementation Libs.room
+    implementation Libs.room_rx
+    kapt Libs.room_compiler
 }

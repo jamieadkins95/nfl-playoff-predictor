@@ -14,6 +14,7 @@ object Versions {
     const val androidx_constraint_layout = "2.0.0-beta7"
     const val material_design = "1.3.0-alpha01"
     const val nav_component = "2.2.2"
+    const val room = "2.2.5"
 
     const val retrofit = "2.4.0"
     const val okhttp = "3.8.0"
