@@ -59,6 +59,6 @@ class PredictionsFragment : Fragment(), PredictionsContract.View {
         val items = predictions.gameweeks.map {
             gameweeks -> gameweeks.matches.map { PredictionItem(it, presenter::makePrediction) }
         }.flatten()
-        groupAdapter.update(items)
+        groupAdapter.update(items + EspnItem())
     }
 }
