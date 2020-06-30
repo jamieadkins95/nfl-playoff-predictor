@@ -20,7 +20,14 @@ data class EventResponse(
     val id: String,
     val name: String,
     val shortName: String,
+    val season: SeasonResponse,
     val competitions: List<CompetitionResponse>
+)
+
+@JsonClass(generateAdapter = true)
+data class SeasonResponse(
+    val year: Int,
+    val type: Int
 )
 
 @JsonClass(generateAdapter = true)

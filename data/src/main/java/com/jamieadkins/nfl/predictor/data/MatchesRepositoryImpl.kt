@@ -13,24 +13,26 @@ class MatchesRepositoryImpl @Inject constructor(
 ) : MatchesRepository {
 
     override fun getMatches(season: Int): Observable<List<GameWeekEntity>> {
-       return footballService.scoreboard(1000, "20190801-20190901")
-           .map { from ->
-               val matches = from.events.map { event ->
-                   val home = event.competitions.first().competitors.first { it.homeAway == "home" }
-                   val away = event.competitions.first().competitors.first { it.homeAway == "away" }
-                   val homeTeam = TeamEntity(1, home.team.name, home.team.abbreviation, home.team.logo)
-                   val awayTeam = TeamEntity(1, away.team.name, away.team.abbreviation, away.team.logo)
+        return footballService.scoreboard(1000, "20190801-20200401")
+            .map { from ->
+                val matches = from.events
+                    .filter { it.season.type == 2 } // Regular season only
+                    .map { event ->
+                        val home = event.competitions.first().competitors.first { it.homeAway == "home" }
+                        val away = event.competitions.first().competitors.first { it.homeAway == "away" }
+                        val homeTeam = TeamEntity(1, home.team.name, home.team.abbreviation, home.team.logo)
+                        val awayTeam = TeamEntity(1, away.team.name, away.team.abbreviation, away.team.logo)
 
-                   val outcome = when(event.competitions.first().competitors.firstOrNull { it.winner }?.homeAway) {
-                       "home" -> MatchOutcomeEntity.HomeTeamWin
-                       "away" -> MatchOutcomeEntity.AwayTeamWin
-                       else -> MatchOutcomeEntity.Undecided
-                   }
+                        val outcome = when (event.competitions.first().competitors.firstOrNull { it.winner }?.homeAway) {
+                            "home" -> MatchOutcomeEntity.HomeTeamWin
+                            "away" -> MatchOutcomeEntity.AwayTeamWin
+                            else -> MatchOutcomeEntity.Undecided
+                        }
 
-                   MatchEntity(event.id, homeTeam, awayTeam, outcome)
-               }
-               listOf(GameWeekEntity(matches))
-           }
-           .toObservable()
+                        MatchEntity(event.id, homeTeam, awayTeam, outcome)
+                    }
+                listOf(GameWeekEntity(matches))
+            }
+            .toObservable()
     }
 }
